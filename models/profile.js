@@ -12,8 +12,8 @@ module.exports = (sequelize, DataTypes) => {
       Profile.belongsTo(models.User, { foreignKey: 'userId' })
 
       Profile.hasMany(models.Movie, {
-        as: 'ratesGiven',
-        foreignKey: 'raterId',
+        as: 'moviesCreated',
+        foreignKey: 'createdById',
       })
 
     }
