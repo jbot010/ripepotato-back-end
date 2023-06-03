@@ -21,7 +21,36 @@ async function index(req, res) {
   }
 }
 
+async function update(req, res) {
+  try {
+    const movie = await Movie.update(
+      req.body,
+      { where: { id: req.params.movieId }, returning: true }
+    )
+    res.status(200).json(movie)
+  } catch (error) {
+    console.log(error)
+    res.status(500).json(error)
+  }
+}
+
+async function deleteMovie(req, res) {
+  try {
+    const rowsRemoved = await Movie.destroy(
+      { where: { id: req.movie.id } }
+    )
+    res.status(200).json(rowsRemoved)
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ err: error })
+  }
+}
+
+
+
 module.exports = {
   createMovie,
   index,
+  update,
+  deleteMovie,
 }
