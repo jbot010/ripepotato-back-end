@@ -37,7 +37,7 @@ async function update(req, res) {
 async function deleteMovie(req, res) {
   try {
     const rowsRemoved = await Movie.destroy(
-      { where: { id: req.movie.id } }
+      { where: { id: req.params.movieId } }
     )
     res.status(200).json(rowsRemoved)
   } catch (error) {
@@ -52,5 +52,5 @@ module.exports = {
   createMovie,
   index,
   update,
-  deleteMovie,
+  delete: deleteMovie,
 }

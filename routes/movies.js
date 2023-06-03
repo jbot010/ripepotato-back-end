@@ -12,7 +12,7 @@ router.use(decodeUserFromToken)
 router.post('/', checkAuth, moviesCtrl.createMovie)
 router.get('/', checkAuth, moviesCtrl.index)
 router.put('/:movieId', checkAuth, moviesCtrl.update)
-router.delete('/delete', checkAuth, moviesCtrl.deleteMovie)
+router.delete('/:movieId', checkAuth, moviesCtrl.delete)
 
 
 module.exports = router
