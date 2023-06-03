@@ -36,10 +36,9 @@ async function update(req, res) {
 
 async function deleteMovie(req, res) {
   try {
-    const rowsRemoved = await Movie.destroy(
-      { where: { id: req.params.movieId } }
-    )
-    res.status(200).json(rowsRemoved)
+    const movie = await Movie.findByPk(req.params.movieId)
+    await movie.destroy()
+    res.status(200).json(movie)
   } catch (error) {
     console.log(error)
     res.status(500).json({ err: error })
