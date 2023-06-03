@@ -11,28 +11,25 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Movie.belongsTo(models.Profile, { foreignKey: 'createdById' })
     }
   }
   Movie.init({
-    createdById: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      onDelete: 'CASCADE',
-      references: {
-        model: 'Profiles',
-        key: 'id',
-      },
-    },
     title: {
       type: DataTypes.STRING,
     },
     rtScore: {
       type: DataTypes.INTEGER,
       validate: {
-        min: 20,
-        max: 80,
-      }
+        min: 0,
+        max: 60,
+      },
+    },
+    createdById: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'Profiles',
+        key: 'id',
+      },
     },
   }, {
     sequelize,

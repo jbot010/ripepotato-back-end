@@ -9,24 +9,22 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      createdById: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        onDelete: 'CASCADE',
-        references: {
-          model: 'Profiles',
-          key: 'id',
-        },
-      },
       title: {
         type: Sequelize.STRING
       },
       rtScore: {
         type: Sequelize.INTEGER,
         validate: {
-          min: 20,
-          max: 80,
-        }
+          min: 0,
+          max: 60,
+        },
+      },
+      createdById: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Profiles',
+          key: 'id',
+        },
       },
       createdAt: {
         allowNull: false,
