@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Movie.belongsTo(models.Profile, { foreignKey: 'profileId' })
+      Movie.belongsTo(models.Profile, { foreignKey: 'createdById' })
     }
   }
   Movie.init({
@@ -27,6 +27,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     createdById: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       references: {
         model: 'Profiles',
         key: 'id',

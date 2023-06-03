@@ -21,6 +21,7 @@ module.exports = {
       },
       createdById: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
           model: 'Profiles',
           key: 'id',
