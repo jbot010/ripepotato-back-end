@@ -11,18 +11,11 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Movie.belongsTo(models.Profile, { foreignKey: 'raterId' })
+      Movie.belongsTo(models.Profile, { foreignKey: 'createdById' })
     }
   }
   Movie.init({
-    value: {
-      type: DataTypes.INTEGER,
-      validate: {
-        min: 0,
-        max: 5,
-      },
-    },
-    raterId: {
+    createdById: {
       type: DataTypes.INTEGER,
       allowNull: false,
       onDelete: 'CASCADE',
@@ -36,6 +29,10 @@ module.exports = (sequelize, DataTypes) => {
     },
     rtScore: {
       type: DataTypes.INTEGER,
+      validate: {
+        min: 20,
+        max: 80,
+      }
     },
   }, {
     sequelize,

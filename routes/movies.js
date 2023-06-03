@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const votesCtrl = require('../controllers/votes.js')
+const moviesCtrl = require('../controllers/movies.js')
 const middleware = require('../middleware/auth.js')
 
 const { decodeUserFromToken, checkAuth } = middleware

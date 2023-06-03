@@ -9,14 +9,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      value: {
-        type: Sequelize.INTEGER,
-        validate: {
-          min: 0,
-          max: 5,
-        },
-      },
-      raterId: {
+      createdById: {
         type: Sequelize.INTEGER,
         allowNull: false,
         onDelete: 'CASCADE',
@@ -29,7 +22,11 @@ module.exports = {
         type: Sequelize.STRING
       },
       rtScore: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        validate: {
+          min: 20,
+          max: 80,
+        }
       },
       createdAt: {
         allowNull: false,
