@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
 
       Movie.hasMany(models.Vote, {
         as: 'votesReceived',
-        foreignKey: 'voteId',
+        foreignKey: 'movieId',
       })
       
     }
