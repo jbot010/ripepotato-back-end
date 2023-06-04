@@ -16,6 +16,11 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'createdById',
       })
 
+      Profile.hasMany(models.Vote, {
+        as: 'votesGiven',
+        foreignKey: 'voterId',
+      })
+
     }
   }
 
