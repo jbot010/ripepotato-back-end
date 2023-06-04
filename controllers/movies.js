@@ -1,4 +1,4 @@
-const { Movie } = require('../models')
+const { Movie, Vote } = require('../models')
 
 async function createMovie(req, res) {
   try {
@@ -13,7 +13,9 @@ async function createMovie(req, res) {
 
 async function index(req, res) {
   try {
-    const movies = await Movie.findAll({})
+    const movies = await Movie.findAll({
+      include: [{ model: Vote, as: "votesReceived" }],
+    })
     res.status(200).json(movies)
   } catch (error) {
     console.log(error)
