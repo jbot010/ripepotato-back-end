@@ -19,6 +19,7 @@ module.exports = {
       movieId: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        onDelete: 'CASCADE',
         references: {
           model: 'Movies',
           key: 'id',
